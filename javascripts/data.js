@@ -1,18 +1,21 @@
 const loadDinos = require('./dinosaurs');
+const printToDom = require('./dom');
 
 let dinoArray = [];
 
-const whendinosLoad = function () {
+const whenDinosLoad = function () {
   dinoArray = JSON.parse(this.responseText).dinosaurs;
-  console.log('dino array', dinoArray);
+  printToDom(dinoArray);
 };
+
 const badDinos = function () {
   console.error('shit broke');
 };
 
 const initializer = () => {
-  loadDinos(whendinosLoad, badDinos);
+  loadDinos(whenDinosLoad, badDinos);
 };
+
 const getDinos = () => {
   return dinoArray;
 };
